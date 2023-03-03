@@ -1,20 +1,15 @@
 ### YOLOv5 5.0-based Face-Mask Detection System
 
-1. 模型选择
-2. 输入选择(本地文件、摄像头、RTSP)；在检测RTSP视频流的时候，尽量不要启用帧间延时，否则会出现很高的延时，用yolo5x模型时，rtsp会很卡，建议抽帧检测, 把main.py中的133-135行注释取消
-```python
-# jump_count += 1
-# if jump_count % 5 != 0:
-#     continue
-```
+![系统展示](https://github.com/Kenny3Shen/FMDS-Graduation-Design/blob/master/imgs/pic1.png)
 
+1. 模型选择
+2. 输入选择(本地文件、摄像头、RTSP)；在检测RTSP视频流的时候，尽量不要启用帧间延时，否则会出现很高的延时。低配计算机不建议使用yolo5x模型，否则视频检测的FPS很低，建议开启抽帧检测。 
 3. IoU调整
 4. 置信度调整
 5. 帧间延时调整
 6. 边框大小调整
 7. 播放/暂停/结束
 8. 统计检测结果（显示边框时，支持中文标签）
-
 
 **本地编译使用：**
 ```bash
