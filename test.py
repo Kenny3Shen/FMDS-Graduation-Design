@@ -3,6 +3,7 @@
 # @Author : Zhao HL
 # @File : 14_multThread.py
 import sys
+
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 

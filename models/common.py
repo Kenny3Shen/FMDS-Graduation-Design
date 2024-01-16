@@ -1,10 +1,10 @@
 # YOLOv5 common modules
 
 import logging
+import math
 from copy import copy
 from pathlib import Path, PosixPath
 
-import math
 import numpy as np
 import pandas as pd
 import requests

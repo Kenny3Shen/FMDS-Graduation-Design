@@ -1,5 +1,7 @@
 import sys
+
 from PyQt5.QtWidgets import QApplication, QWidget
+
 from dialog.rtsp_dialog import Ui_Form
 
 

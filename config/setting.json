@@ -1,7 +1,7 @@
 {
-  "conf": 0.25,
+  "conf": 0.5,
   "iou": 0.45,
-  "rate": 20,
+  "rate": 10,
   "thin": 2,
   "check": 0,
   "check_nms": 0

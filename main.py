@@ -1,27 +1,27 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMenu, QAction, QMessageBox
-from main_win.win import Ui_mainWindow
-from PyQt5.QtCore import Qt, QPoint, QTimer, QThread, pyqtSignal
-from PyQt5.QtGui import QImage, QPixmap, QPainter, QIcon
-
-import sys
 import json
+import os
+import sys
+import time
+
+import cv2
 import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
-import os
-import time
-import cv2
+from PyQt5.QtCore import Qt, QPoint, QTimer, QThread, pyqtSignal
+from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMenu
 
-from models.experimental import attempt_load
-from utils.datasets import LoadImages, LoadWebcam
-from utils.CustomMessageBox import MessageBox
-# LoadWebcam 的最后一个返回值改为 self.cap
-from utils.general import check_img_size, check_requirements, check_imshow, colorstr, non_max_suppression, \
-    apply_classifier, scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path, save_one_box
-from utils.plots import colors, plot_one_box, plot_one_box_PIL
-from utils.torch_utils import select_device, load_classifier, time_sync
-from utils.capnums import Camera
 from dialog.rtsp_win import Window
+from main_win.win import Ui_mainWindow
+from models.experimental import attempt_load
+from utils.CustomMessageBox import MessageBox
+from utils.capnums import Camera
+from utils.datasets import LoadImages, LoadWebcam
+# LoadWebcam 的最后一个返回值改为 self.cap
+from utils.general import check_img_size, check_imshow, non_max_suppression, \
+    scale_coords
+from utils.plots import colors, plot_one_box
+from utils.torch_utils import select_device
 
 
 class DetThread(QThread):
@@ -53,7 +53,7 @@ class DetThread(QThread):
     def run(self,
             imgsz=640,  # inference size (pixels)
             max_det=1000,  # maximum detections per image
-            device='0',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
+            device='0' if torch.cuda.is_available() else 'cpu',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
             view_img=True,  # show results
             save_txt=False,  # save results to *.txt
             save_conf=False,  # save confidences in --save-txt labels

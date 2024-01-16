@@ -87,4 +87,3 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "RTSP流输入"))
         self.label.setText(_translate("Form", "输入rtsp地址:"))
         self.rtspButton.setText(_translate("Form", "确认"))
-import apprcc_rc

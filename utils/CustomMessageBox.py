@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QTimer
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtGui import QPixmap, QIcon
 
 
 # 单按钮对话框，出现到指定时长后自动消失
